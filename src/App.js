@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { Button } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import "./App.css";
+import PersonProfile from "./Components/PersonProfile";
+//import QUNT from "../public/quantum.jpg";
+class App extends Component {
+  constructor() {
+    super();
+    this.state = { show: false };
+  }
+  Toggle = () => {
+    this.setState({ show: !this.state.show });
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <Button variant="light" onClick={this.Toggle}>
+          {this.state.show ? "Hide" : "Show"}{" "}
+        </Button>
+        {this.state.show ? <PersonProfile /> : null}
+      </div>
+    );
+  }
 }
 
 export default App;
